@@ -144,6 +144,24 @@ function queryCoreReportingApi(profileId) {
       // Log any errors.
       console.log(err);
   });
+  // Define the URLs we'll allow.
+var ALLOWED_BY = new Set([
+  'https://example.com',
+  'https://github.com'
+])
+
+app.get('/iframe', function (req, res) {
+  // Is the URL in the whitelist?
+  // Set X-Frame-Options if so. Otherwise, we won't
+  // set the header and browsers will block it.
+  var domain = String(req.query.domain)
+  if (ALLOWED_BY.has(domain)) {
+    res.setHeader('X-Frame-Options', 'ALLOW-FROM ' + domain)
+  }
+
+  // Send the iframe as usual.
+  res.sendFile('iframe.html')
+})
 }
 
   // Add an event listener to the 'auth-button'.
