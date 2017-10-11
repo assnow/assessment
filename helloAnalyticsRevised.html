@@ -81,11 +81,9 @@ function handleAccounts(response) {
 }
 
 document.getElementById('accountSelect').onchange = function(){
-  var selectedItem = this.option[ this.selectedIndex ];
+  var selectedItem = this.options[ this.selectedIndex ];
   alert (seletctedItem.value);
 }
-document.getElementById('auth-button').addEventListener('click', authorize);
-
 /*
 function queryProperties(accountId) {
   // Get a list of all the properties for the account.
