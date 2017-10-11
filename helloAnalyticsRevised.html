@@ -57,19 +57,17 @@ function queryAccounts() {
 
 function handleAccounts(response) {
   // Handles the response from the accounts list method.
+  var arr = [];
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
     for (var i = 0; i < response.result.items.length; i++){
-      console.log(response.result.items[i].name);
+      arr.push(response.result.items[i].name));
     }
   } else {
     console.log('No accounts found for this user.');
   }
-
-
-
-  //var formattedJson = JSON.stringify(response.result, null, 2);
-  //document.getElementById('query-output').value = formattedJson;
+  console.log(arr);
+  document.getElementById('query-output').value = arr;
 }
 
 /*
