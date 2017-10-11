@@ -61,7 +61,7 @@ function handleAccounts(response) {
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
     for (var i = 0; i < response.result.items.length; i++){
-      arr.push(response.result.items[i].name));
+      arr.push(response.result.items[i].name);
     }
   } else {
     console.log('No accounts found for this user.');
