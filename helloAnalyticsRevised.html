@@ -12,6 +12,8 @@
 
 <textarea cols="80" rows="20" id="query-output"></textarea>
 
+<select id="select">
+
 <script>
 
   // Replace with your client ID from the developer console.
@@ -58,10 +60,15 @@ function queryAccounts() {
 function handleAccounts(response) {
   // Handles the response from the accounts list method.
   var arr = [];
+  var select = document.getElementById('select');
+  var option = document.createElement('option');
+  
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
     for (var i = 0; i < response.result.items.length; i++){
-      arr.push(response.result.items[i].name);
+      option.setAttribute('value', 'value属性に入れる値');
+      option.innerHTML = response.result.items[i].name;
+      select.appendChild(option);
     }
   } else {
     console.log('No accounts found for this user.');
