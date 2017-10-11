@@ -67,7 +67,7 @@ function handleAccounts(response) {
     // Get the first Google Analytics account.
     for (var i = 0; i < response.result.items.length; i++){
       var option = document.createElement('option');
-      option.setAttribute('value', 'value属性に入れる値');
+      option.setAttribute('value', i);
       option.innerHTML = response.result.items[i].name;
       select.appendChild(option);
     }
