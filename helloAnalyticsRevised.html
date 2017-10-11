@@ -59,8 +59,9 @@ function handleAccounts(response) {
   // Handles the response from the accounts list method.
   if (response.result.items && response.result.items.length) {
     // Get the first Google Analytics account.
-    console.log(response.result.items);
-
+    for (var i = 0; i < response.result.items.length; i++){
+      console.log(response.result.items[i].name);
+    }
   } else {
     console.log('No accounts found for this user.');
   }
