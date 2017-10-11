@@ -12,7 +12,7 @@
 
 <textarea cols="80" rows="20" id="query-output"></textarea>
 <br>
-<select id="select">
+<select id="accountSelect">
   <option value="hoge">--アカウントの選択--</option>
 </select>
 
@@ -62,7 +62,7 @@ function queryAccounts() {
 function handleAccounts(response) {
   // Handles the response from the accounts list method.
   var arr = [];
-  var select = document.getElementById('select');
+  var select = document.getElementById('accountSelect');
   
   
   if (response.result.items && response.result.items.length) {
@@ -79,6 +79,12 @@ function handleAccounts(response) {
   console.log(arr);
   document.getElementById('query-output').value = arr;
 }
+
+document.getElementById('accountSelect').onchange = function(){
+  var selectedItem = this.option[ this.selectedIndex ];
+  alert (seletctedItem.value);
+}
+document.getElementById('auth-button').addEventListener('click', authorize);
 
 /*
 function queryProperties(accountId) {
