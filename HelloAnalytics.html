@@ -24,6 +24,7 @@
   function authorize(event) {
     // Handles the authorization flow.
     // `immediate` should be false when invoked from the button click.
+    console.log(event);
     var useImmdiate = event ? false : true;
     var authData = {
       client_id: CLIENT_ID,
