@@ -109,9 +109,9 @@ function handleProperties(response){
    var selectpro = document.getElementById('propertySelect');
    var selectview = document.getElementById('viewSelect');
    //選択が変わるごとにoptionが複数選択されるのを防ぐため、optionを削除する
-   if(propertySelect.childNodes.length > 2){
-     while(propertySelect.childNodes.length > 1){
-       propertySelect.removeChild(propertySelect.lastChaild)
+   if(selectpro.childNodes.length > 2){
+     while(selectpro.childNodes.length > 1){
+       selectpro.removeChild(selectpro.lastChaild)
      }
    }
      
