@@ -76,7 +76,8 @@ function handleAccounts(response) {
   
   
   if (response.result.items && response.result.items.length) {
-    accountResponseItems = response.result.items;
+    accountResponseItems = response.result.items;//グローバル変数でアカウントリストのレスポンスを定義
+    //←好ましくないコードなため、修正必要
     // Get the first Google Analytics account.
     //アカウントをセレクトタグ内のオプションタグ内に挿入する
     for (var i = 0; i < response.result.items.length; i++){
@@ -92,14 +93,22 @@ function handleAccounts(response) {
 
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
-  //alert (selectedItem.text);
-  alert(accountResponseItems[selectedItem.value].id);
+  var accountId = accountResponseItems[selectedItem.value].id;
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+  
 }
 
-function changeAccount(){
+function handleProperties(response){
+  console.log(response.result.items)
+};
 
-
-}
+//function changeAccount(){}
 /*
 function queryProperties(accountId) {
   // Get a list of all the properties for the account.
