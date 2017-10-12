@@ -76,7 +76,7 @@ function handleAccounts(response) {
   
   
   if (response.result.items && response.result.items.length) {
-    console.log(response.result.items);
+    var accountResponseItems = response.result.items;
     // Get the first Google Analytics account.
     //アカウントをセレクトタグ内のオプションタグ内に挿入する
     for (var i = 0; i < response.result.items.length; i++){
@@ -93,7 +93,7 @@ function handleAccounts(response) {
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   //alert (selectedItem.text);
-  alert(response.result.items[selectedItem.value].id)
+  alert(accountResponseItems[selectedItem.value].id);
 }
 
 function changeAccount(){
