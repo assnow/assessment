@@ -111,7 +111,7 @@ function handleProperties(response){
    //選択が変わるごとにoptionが複数選択されるのを防ぐため、optionを削除する
    if(propertySelect.hasChildNodes()){
      while(propertySelect.lastChild){
-       propertySelect.removeChild(x.firstChaild)
+       propertySelect.removeChild(propertySelect.firstChaild)
      }
    }
    //選択ごとに対応したプロパティを追加する
