@@ -17,7 +17,7 @@
 </select>
 <br>
 <select id="propertySelect" hidden>
-  <option value="hoge">--プロパティの選択--</option>
+
 </select>
 <br>
 <select id="viewSelect" hidden>
@@ -109,16 +109,18 @@ function handleProperties(response){
    var selectpro = document.getElementById('propertySelect');
    var selectview = document.getElementById('viewSelect');
    //選択が変わるごとにoptionが複数選択されるのを防ぐため、optionを削除する
-   console.log(selectpro.childNodes.length)
-   /*
-   if(selectpro.childNodes.length > 2){
-     while(selectpro.childNodes.length > 1){
-       selectpro.removeChild(selectpro.lastChaild)
-     }
-   }
-   */
+   if (selectpro.hasChildNodes()) {
+		while (selectpro.childNodes.length > 0) {
+			selectpro.removeChild(selectpro.firstChild)
+		}
+	}
      
    //選択ごとに対応したプロパティを追加する
+   var option = document.createElement("option");
+   option.value = "hoge";
+   option.innerText = "--プロパティの選択--";
+   selectpro.appendChild(option);
+    }
    for (var i = 0; i < response.result.items.length; i++){
       var option = document.createElement('option');
       option.setAttribute('value', i);
