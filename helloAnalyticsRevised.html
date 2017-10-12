@@ -109,11 +109,14 @@ function handleProperties(response){
    var selectpro = document.getElementById('propertySelect');
    var selectview = document.getElementById('viewSelect');
    //選択が変わるごとにoptionが複数選択されるのを防ぐため、optionを削除する
+   console.log(selectpro.childNodes.length)
+   /*
    if(selectpro.childNodes.length > 2){
      while(selectpro.childNodes.length > 1){
        selectpro.removeChild(selectpro.lastChaild)
      }
    }
+   */
      
    //選択ごとに対応したプロパティを追加する
    for (var i = 0; i < response.result.items.length; i++){
