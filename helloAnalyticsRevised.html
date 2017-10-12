@@ -105,7 +105,19 @@ document.getElementById('accountSelect').onchange = function(){
 }
 
 function handleProperties(response){
-  console.log(response.result.items)
+   if (response.result.items && response.result.items.length) {
+   var select = document.getElementById('propertySelect');
+     
+   for (var i = 0; i < response.result.items.length; i++){
+      var option = document.createElement('option');
+      option.setAttribute('value', i);
+      option.innerHTML = response.result.items[i].name;
+      select.appendChild(option);
+    }
+   select.hidden = false;
+  } else {
+    console.log('No properties found for this user.');
+  }
 };
 
 //function changeAccount(){}
