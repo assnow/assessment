@@ -76,7 +76,7 @@ function handleAccounts(response) {
   
   
   if (response.result.items && response.result.items.length) {
-    var accountResponseItems = response.result.items;
+    accountResponseItems = response.result.items;
     // Get the first Google Analytics account.
     //アカウントをセレクトタグ内のオプションタグ内に挿入する
     for (var i = 0; i < response.result.items.length; i++){
