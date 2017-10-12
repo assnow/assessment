@@ -92,7 +92,8 @@ function handleAccounts(response) {
 
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
-  alert (selectedItem.text);
+  //alert (selectedItem.text);
+  alert(response.result.items[selectedItem.value].id)
 }
 
 function changeAccount(){
