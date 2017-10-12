@@ -76,7 +76,9 @@ function handleAccounts(response) {
   
   
   if (response.result.items && response.result.items.length) {
+    console.log(response.result.items);
     // Get the first Google Analytics account.
+    //アカウントをセレクトタグ内のオプションタグ内に挿入する
     for (var i = 0; i < response.result.items.length; i++){
       var option = document.createElement('option');
       option.setAttribute('value', i);
@@ -86,13 +88,16 @@ function handleAccounts(response) {
   } else {
     console.log('No accounts found for this user.');
   }
-  console.log(arr);
-  document.getElementById('query-output').value = arr;
 }
 
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   alert (selectedItem.text);
+}
+
+function changeAccount(){
+
+
 }
 /*
 function queryProperties(accountId) {
