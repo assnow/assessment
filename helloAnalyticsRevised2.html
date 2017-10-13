@@ -106,6 +106,7 @@ document.getElementById('accountSelect').onchange = function(){
 
 function handleProperties(response){
    propertyResponseItems = response.result.items;
+   console.log(propertyResponseItems);
    if (response.result.items && response.result.items.length) {
    var selectpro = document.getElementById('propertySelect');
    var selectview = document.getElementById('viewSelect');
@@ -133,7 +134,7 @@ function handleProperties(response){
     console.log('No properties found for this user.');
   }
 };
-console.log(propertyResponseItems);
+
 /*
 document.getElementById('propertySelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
