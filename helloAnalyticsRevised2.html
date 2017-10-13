@@ -133,10 +133,11 @@ function handleProperties(response){
     console.log('No properties found for this user.');
   }
 };
-console.log(propertyResponseItems);
 
-/*
+
 document.getElementById('propertySelect').onchange = function(){
+  console.log(propertyResponseItems);
+  /*
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = accountResponseItems[selectedItem.value].id;
   gapi.client.analytics.management.webproperties.list(
@@ -146,8 +147,8 @@ document.getElementById('propertySelect').onchange = function(){
       // Log any errors.
       console.log(err);
   });
-  
-}*/
+  */
+}
 	
 //function changeAccount(){}
 /*
