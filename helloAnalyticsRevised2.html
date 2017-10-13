@@ -99,7 +99,7 @@ function handleAccounts(response) {
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = accountResponseItems[selectedItem.value].id;
-	document.getElementById('ok').hidden = false;
+	document.getElementById('ok').hidden = true;
   gapi.client.analytics.management.webproperties.list(
       {'accountId': accountId})
     .then(handleProperties)
@@ -146,7 +146,7 @@ document.getElementById('propertySelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = propertyResponseItems[selectedItem.value].accountId;
   var propertyId = propertyResponseItems[selectedItem.value].id;
-	document.getElementById('ok').hidden = false;
+	document.getElementById('ok').hidden = true;
   gapi.client.analytics.management.profiles.list({
       'accountId': accountId,
       'webPropertyId': propertyId
