@@ -108,7 +108,7 @@ function handleProperties(response){
    propertyResponseItems = response.result.items;
    if (response.result.items && response.result.items.length) {
    var selectpro = document.getElementById('propertySelect');
-   var selectview = document.getElementById('viewSelect');
+   
    //選択が変わるごとにoptionが複数選択されるのを防ぐため、optionを削除する
    if (selectpro.hasChildNodes()) {
 		while (selectpro.childNodes.length > 0) {
@@ -136,7 +136,43 @@ function handleProperties(response){
 
 
 document.getElementById('propertySelect').onchange = function(){
-  console.log(propertyResponseItems);
+  var selectedItem = this.options[ this.selectedIndex ];
+  var accountId = accountResponseItems[selectedItem.value].accountId;
+  var propertyId = accountResponseItems[selectedItem.value].id;
+  gapi.client.analytics.management.profiles.list({
+      'accountId': accountId,
+      'webPropertyId': propertyId
+  })
+  .then(handleProfiles)
+  .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+ function handleProfiles(response){
+	 if (response.result.items && response.result.items.length) {
+		 var selectview = document.getElementById('viewSelect');
+		 if (selectview.hasChildNodes()) {
+			 while (selectview.childNodes.length > 0) {
+				 selectview.removeChild(selectview.firstChild)
+			 };
+		 };
+		 
+		 var option = document.createElement("option");
+		 option.value = "hoge";
+		 option.innerText = "--ビューの選択--";
+		 selectview.appendChild(option);
+		 
+		 for (var i = 0; i < response.result.items.length; i++){
+			 var option = document.createElement('option');
+			 option.setAttribute('value', i);
+			 option.innerHTML = response.result.items[i].name;
+			 selectpro.appendChild(option);
+		 }
+		 selectview.hidden = false;
+  } else {
+    console.log('No properties found for this user.');
+  }
+};
   /*
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = accountResponseItems[selectedItem.value].id;
