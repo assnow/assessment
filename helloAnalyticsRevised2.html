@@ -180,9 +180,11 @@ document.getElementById('propertySelect').onchange = function(){
 			 selectview.appendChild(option);
 		 };
 		 selectview.hidden = false;
-  };else {
+  }else {
     console.log('No properties found for this user.');
-  };
+  }
+ };
+
 //
 document.getElementById('viewSelect').onchange = function(){
 	var selectedItem = this.options[ this.selectedIndex ];
