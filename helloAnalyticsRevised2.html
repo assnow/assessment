@@ -38,7 +38,7 @@
   // Set authorized scope.
   var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 
-
+	//Oath認証部分
   function authorize(event) {
     // Handles the authorization flow.
     // `immediate` should be false when invoked from the button click.
@@ -62,7 +62,7 @@
     });
   }
 
-
+//アカウントリクエスト部分
 function queryAccounts() {
   // Load the Google Analytics client library.
   gapi.client.load('analytics', 'v3').then(function() {
@@ -72,7 +72,7 @@ function queryAccounts() {
   });
 }
 
-
+//アカウントをオプションに追加部分
 function handleAccounts(response) {
   // Handles the response from the accounts list method.
   var arr = [];
@@ -95,9 +95,11 @@ function handleAccounts(response) {
   }
 }
 
+//プロパティのリクエスト部分
 document.getElementById('accountSelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = accountResponseItems[selectedItem.value].id;
+	document.getElementById('ok').hidden = false;
   gapi.client.analytics.management.webproperties.list(
       {'accountId': accountId})
     .then(handleProperties)
@@ -107,7 +109,7 @@ document.getElementById('accountSelect').onchange = function(){
   });
   
 }
-
+//プロパティをオプションに追加
 function handleProperties(response){
    propertyResponseItems = response.result.items;
    if (response.result.items && response.result.items.length) {
@@ -139,7 +141,7 @@ function handleProperties(response){
   }
 };
 
-
+//ビューのリクエスト部分
 document.getElementById('propertySelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = propertyResponseItems[selectedItem.value].accountId;
@@ -148,12 +150,16 @@ document.getElementById('propertySelect').onchange = function(){
       'accountId': accountId,
       'webPropertyId': propertyId
   })
+	document.getElementById('ok').hidden = false;
   .then(handleProfiles)
   .then(null, function(err) {
       // Log any errors.
       console.log(err);
   });
+	
+	//ビューをオプションに追加
  function handleProfiles(response){
+	 profileResponseItems = response.result.items;
 	 if (response.result.items && response.result.items.length) {
 		 var selectview = document.getElementById('viewSelect');
 		 if (selectview.hasChildNodes()) {
@@ -178,18 +184,15 @@ document.getElementById('propertySelect').onchange = function(){
     console.log('No properties found for this user.');
   }
 };
-  /*
-  var selectedItem = this.options[ this.selectedIndex ];
-  var accountId = accountResponseItems[selectedItem.value].id;
-  gapi.client.analytics.management.webproperties.list(
-      {'accountId': accountId})
-    .then(handleProperties)
-    .then(null, function(err) {
-      // Log any errors.
-      console.log(err);
-  });
-  */
+//
+document.getElementById('viewSelect').onchange = function(){
+	var selectedItem = this.options[ this.selectedIndex ];
+	selectedAccountId = selectedItem[selectedItem.value].accountId;
+	selectedPropertyId = selectedItem[selectedItem.value].propertyId;
+	selectedProfileId = selectedItem[selectedItem.value].id;
+	document.getElementById('ok').hidden = false;
 }
+
 	
 //function changeAccount(){}
 /*
