@@ -137,8 +137,8 @@ function handleProperties(response){
 
 document.getElementById('propertySelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
-  var accountId = accountResponseItems[selectedItem.value].accountId;
-  var propertyId = accountResponseItems[selectedItem.value].id;
+  var accountId = propertyResponseItems[selectedItem.value].accountId;
+  var propertyId = propertyResponseItems[selectedItem.value].id;
   gapi.client.analytics.management.profiles.list({
       'accountId': accountId,
       'webPropertyId': propertyId
