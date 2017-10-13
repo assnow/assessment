@@ -146,11 +146,11 @@ document.getElementById('propertySelect').onchange = function(){
   var selectedItem = this.options[ this.selectedIndex ];
   var accountId = propertyResponseItems[selectedItem.value].accountId;
   var propertyId = propertyResponseItems[selectedItem.value].id;
+	document.getElementById('ok').hidden = false;
   gapi.client.analytics.management.profiles.list({
       'accountId': accountId,
       'webPropertyId': propertyId
   })
-	document.getElementById('ok').hidden = false;
   .then(handleProfiles)
   .then(null, function(err) {
       // Log any errors.
