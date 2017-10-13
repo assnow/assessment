@@ -105,6 +105,7 @@ document.getElementById('accountSelect').onchange = function(){
 }
 
 function handleProperties(response){
+   propertyResponseItems = response.result.items;
    if (response.result.items && response.result.items.length) {
    var selectpro = document.getElementById('propertySelect');
    var selectview = document.getElementById('viewSelect');
@@ -132,7 +133,21 @@ function handleProperties(response){
     console.log('No properties found for this user.');
   }
 };
-
+console.log(propertyResponseItems);
+/*
+document.getElementById('propertySelect').onchange = function(){
+  var selectedItem = this.options[ this.selectedIndex ];
+  var accountId = accountResponseItems[selectedItem.value].id;
+  gapi.client.analytics.management.webproperties.list(
+      {'accountId': accountId})
+    .then(handleProperties)
+    .then(null, function(err) {
+      // Log any errors.
+      console.log(err);
+  });
+  
+}*/
+	
 //function changeAccount(){}
 /*
 function queryProperties(accountId) {
