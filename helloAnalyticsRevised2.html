@@ -188,9 +188,12 @@ document.getElementById('propertySelect').onchange = function(){
 //
 document.getElementById('viewSelect').onchange = function(){
 	var selectedItem = this.options[ this.selectedIndex ];
+	console.log(selectedItem[selectedItem.value]);
+	/*
 	selectedAccountId = selectedItem[selectedItem.value].accountId;
 	selectedPropertyId = selectedItem[selectedItem.value].propertyId;
 	selectedProfileId = selectedItem[selectedItem.value].id;
+	*/
 	document.getElementById('ok').hidden = false;
 };
 
