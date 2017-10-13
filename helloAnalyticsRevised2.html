@@ -188,7 +188,7 @@ document.getElementById('propertySelect').onchange = function(){
 //
 document.getElementById('viewSelect').onchange = function(){
 	var selectedItem = this.options[ this.selectedIndex ];
-	console.log(selectedItem[selectedItem.value]);
+	console.log(profileResponseItems[selectedItem.value]);
 	/*
 	selectedAccountId = selectedItem[selectedItem.value].accountId;
 	selectedPropertyId = selectedItem[selectedItem.value].propertyId;
@@ -196,6 +196,26 @@ document.getElementById('viewSelect').onchange = function(){
 	*/
 	document.getElementById('ok').hidden = false;
 };
+document.getElementById('ok').onclick = function(){
+  var request = gapi.client.analytics.management.profileUserLinks.insert(
+    {
+      'accountId': '123456',
+      'webPropertyId': 'UA-123456-1',
+      'profileId': '7654321',
+      'resource': {
+        'permissions': {
+          'local': [
+            'EDIT',
+            'MANAGE_USERS'
+          ]
+        },
+        'userRef': {
+          'email': 'liz@gmail.com'
+        }
+      }
+    });
+  request.execute(function (response) { // Handle the response. });
+}
 
   // Add an event listener to the 'auth-button'.
   document.getElementById('auth-button').addEventListener('click', authorize);
