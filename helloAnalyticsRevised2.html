@@ -190,9 +190,9 @@ document.getElementById('viewSelect').onchange = function(){
 	var selectedItem = this.options[ this.selectedIndex ];
 	console.log(profileResponseItems[selectedItem.value]);
 	
-	selectedAccountId = selectedItem[selectedItem.value].accountId;
-	selectedPropertyId = selectedItem[selectedItem.value].webPropertyId;
-	selectedProfileId = selectedItem[selectedItem.value].id;
+	selectedAccountId = profileResponseItems[selectedItem.value].accountId;
+	selectedPropertyId = profileResponseItems[selectedItem.value].webPropertyId;
+	selectedProfileId = profileResponseItems[selectedItem.value].id;
 	document.getElementById('ok').hidden = false;
 };
 document.getElementById('ok').onclick = function(){
