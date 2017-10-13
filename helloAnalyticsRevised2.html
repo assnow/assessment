@@ -189,19 +189,18 @@ document.getElementById('propertySelect').onchange = function(){
 document.getElementById('viewSelect').onchange = function(){
 	var selectedItem = this.options[ this.selectedIndex ];
 	console.log(profileResponseItems[selectedItem.value]);
-	/*
+	
 	selectedAccountId = selectedItem[selectedItem.value].accountId;
-	selectedPropertyId = selectedItem[selectedItem.value].propertyId;
+	selectedPropertyId = selectedItem[selectedItem.value].webPropertyId;
 	selectedProfileId = selectedItem[selectedItem.value].id;
-	*/
 	document.getElementById('ok').hidden = false;
 };
 document.getElementById('ok').onclick = function(){
   var request = gapi.client.analytics.management.profileUserLinks.insert(
     {
-      'accountId': '123456',
-      'webPropertyId': 'UA-123456-1',
-      'profileId': '7654321',
+      'accountId': selectedAccountId,
+      'webPropertyId': selectedPropertyId,
+      'profileId': selectedProfileId,
       'resource': {
         'permissions': {
           'local': [
@@ -210,7 +209,7 @@ document.getElementById('ok').onclick = function(){
           ]
         },
         'userRef': {
-          'email': 'liz@gmail.com'
+          'email': 'aspirinsno92@gmail.com'
         }
       }
     });
